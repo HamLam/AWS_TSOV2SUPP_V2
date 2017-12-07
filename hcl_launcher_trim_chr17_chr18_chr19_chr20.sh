@@ -169,7 +169,7 @@ tr , '\n' < "$sample_path/ordered_genes_temp.txt" > "$sample_path/ordered_genes.
 #cp $template_pwd/chr17_chr18_chr19_chr20_ordered_genes.txt $sample_path/ordered_genes.txt
 echo "Searching chr17-20 genes"
 mv $sample_path/ordered_genes.txt $sample_path/ordered_genes.txt.orig
-perl $scripts_location/find_chr17_18_19_20.pl $template_pwd/TSOV2_Genes_With_Chr_listed $sample_path/ordered_genes.txt.orig
+perl $scripts_location/find_chr17_18_19_20.pl $template_pwd/TSOV2supp_genes_chr_listed $sample_path/ordered_genes.txt.orig
 cp $current_path/chr17_18_19_20_genes_file.txt $sample_path/ordered_genes.txt
 cp $current_path/chr17_18_19_20_genes_file.txt $sample_path/chr17_18_19_20_genes_file.txt
 echo "chr17-20 genes searched"
