@@ -164,57 +164,57 @@ grep "mysqlimport" $working_dir/completed.txt > /dev/null 2>&1
    echo "mysqlimport already run"
 else
  echo "Run mysqlimport"
-mysqlimport --local --socket=$BASE/thesock -u root cnv1 --use-threads=4 cnv_control_name_bwa_pileup_no_dup.chr*_t cnv_control_name_bwa_pileup.chr*_t cnv_control_name_bowtie_pileup.chr*_t cnv_sample_name_bwa_pileup_no_dup.chr*_t cnv_sample_name_bwa_pileup.chr*_t cnv_sample_name_bowtie_pileup.chr*_t
+# mysqlimport --local --socket=$BASE/thesock -u root cnv1 --use-threads=4 cnv_control_name_bwa_pileup_no_dup.chr*_t cnv_control_name_bwa_pileup.chr*_t cnv_control_name_bowtie_pileup.chr*_t cnv_sample_name_bwa_pileup_no_dup.chr*_t cnv_sample_name_bwa_pileup.chr*_t cnv_sample_name_bowtie_pileup.chr*_t
     
-    # mysqlimport --local --socket=$BASE/thesock -u root cnv1 --use-threads=5 --debug-check \
-    # cnv_control_name_bwa_pileup_no_dup.chr1_t \
-    # cnv_control_name_bwa_pileup_no_dup.chr2_t \
-    # cnv_control_name_bwa_pileup_no_dup.chr6_t \
-    # cnv_control_name_bwa_pileup_no_dup.chr9_t \
-    # cnv_control_name_bwa_pileup_no_dup.chr10_t \
-    # cnv_control_name_bwa_pileup_no_dup.chr13_t \
-    # cnv_control_name_bwa_pileup_no_dup.chr15_t \
-    # cnv_control_name_bwa_pileup_no_dup.chr17_t \
-    # cnv_control_name_bwa_pileup.chr1_t \
-    # cnv_control_name_bwa_pileup.chr2_t \
-    # cnv_control_name_bwa_pileup.chr6_t \
-    # cnv_control_name_bwa_pileup.chr9_t \
-    # cnv_control_name_bwa_pileup.chr10_t \
-    # cnv_control_name_bwa_pileup.chr13_t \
-    # cnv_control_name_bwa_pileup.chr15_t \
-    # cnv_control_name_bwa_pileup.chr17_t \
-    # cnv_control_name_bowtie_pileup.chr1_t \
-    # cnv_control_name_bowtie_pileup.chr2_t \
-    # cnv_control_name_bowtie_pileup.chr6_t \
-    # cnv_control_name_bowtie_pileup.chr9_t \
-    # cnv_control_name_bowtie_pileup.chr10_t \
-    # cnv_control_name_bowtie_pileup.chr13_t \
-    # cnv_control_name_bowtie_pileup.chr15_t \
-    # cnv_control_name_bowtie_pileup.chr17_t \
-    # cnv_sample_name_bwa_pileup_no_dup.chr1_t \
-    # cnv_sample_name_bwa_pileup_no_dup.chr2_t \
-    # cnv_sample_name_bwa_pileup_no_dup.chr6_t \
-    # cnv_sample_name_bwa_pileup_no_dup.chr9_t \
-    # cnv_sample_name_bwa_pileup_no_dup.chr10_t \
-    # cnv_sample_name_bwa_pileup_no_dup.chr13_t \
-    # cnv_sample_name_bwa_pileup_no_dup.chr15_t \
-    # cnv_sample_name_bwa_pileup_no_dup.chr17_t \
-    # cnv_sample_name_bwa_pileup.chr1_t \
-    # cnv_sample_name_bwa_pileup.chr2_t \
-    # cnv_sample_name_bwa_pileup.chr6_t \
-    # cnv_sample_name_bwa_pileup.chr9_t \
-    # cnv_sample_name_bwa_pileup.chr10_t \
-    # cnv_sample_name_bwa_pileup.chr13_t \
-    # cnv_sample_name_bwa_pileup.chr15_t \
-    # cnv_sample_name_bwa_pileup.chr17_t \
-    # cnv_sample_name_bowtie_pileup.chr1_t \
-    # cnv_sample_name_bowtie_pileup.chr2_t \
-    # cnv_sample_name_bowtie_pileup.chr6_t \
-    # cnv_sample_name_bowtie_pileup.chr9_t \
-    # cnv_sample_name_bowtie_pileup.chr10_t \
-    # cnv_sample_name_bowtie_pileup.chr13_t \
-    # cnv_sample_name_bowtie_pileup.chr15_t \
-    # cnv_sample_name_bowtie_pileup.chr17_t 
+    mysqlimport --local --socket=$BASE/thesock -u root cnv1 --use-threads=5 --debug-check \
+     cnv_control_name_bwa_pileup_no_dup.chr1_t \
+     cnv_control_name_bwa_pileup_no_dup.chr2_t \
+     cnv_control_name_bwa_pileup_no_dup.chr6_t \
+     cnv_control_name_bwa_pileup_no_dup.chr9_t \
+     cnv_control_name_bwa_pileup_no_dup.chr10_t \
+     cnv_control_name_bwa_pileup_no_dup.chr13_t \
+     cnv_control_name_bwa_pileup_no_dup.chr15_t \
+     cnv_control_name_bwa_pileup_no_dup.chr17_t \
+     cnv_control_name_bwa_pileup.chr1_t \
+     cnv_control_name_bwa_pileup.chr2_t \
+     cnv_control_name_bwa_pileup.chr6_t \
+     cnv_control_name_bwa_pileup.chr9_t \
+     cnv_control_name_bwa_pileup.chr10_t \
+     cnv_control_name_bwa_pileup.chr13_t \
+     cnv_control_name_bwa_pileup.chr15_t \
+     cnv_control_name_bwa_pileup.chr17_t \
+     cnv_control_name_bowtie_pileup.chr1_t \
+     cnv_control_name_bowtie_pileup.chr2_t \
+     cnv_control_name_bowtie_pileup.chr6_t \
+     cnv_control_name_bowtie_pileup.chr9_t \
+     cnv_control_name_bowtie_pileup.chr10_t \
+     cnv_control_name_bowtie_pileup.chr13_t \
+     cnv_control_name_bowtie_pileup.chr15_t \
+     cnv_control_name_bowtie_pileup.chr17_t \
+     cnv_sample_name_bwa_pileup_no_dup.chr1_t \
+     cnv_sample_name_bwa_pileup_no_dup.chr2_t \
+     cnv_sample_name_bwa_pileup_no_dup.chr6_t \
+     cnv_sample_name_bwa_pileup_no_dup.chr9_t \
+     cnv_sample_name_bwa_pileup_no_dup.chr10_t \
+     cnv_sample_name_bwa_pileup_no_dup.chr13_t \
+     cnv_sample_name_bwa_pileup_no_dup.chr15_t \
+     cnv_sample_name_bwa_pileup_no_dup.chr17_t \
+     cnv_sample_name_bwa_pileup.chr1_t \
+     cnv_sample_name_bwa_pileup.chr2_t \
+     cnv_sample_name_bwa_pileup.chr6_t \
+     cnv_sample_name_bwa_pileup.chr9_t \
+     cnv_sample_name_bwa_pileup.chr10_t \
+     cnv_sample_name_bwa_pileup.chr13_t \
+     cnv_sample_name_bwa_pileup.chr15_t \
+     cnv_sample_name_bwa_pileup.chr17_t \
+     cnv_sample_name_bowtie_pileup.chr1_t \
+     cnv_sample_name_bowtie_pileup.chr2_t \
+     cnv_sample_name_bowtie_pileup.chr6_t \
+     cnv_sample_name_bowtie_pileup.chr9_t \
+     cnv_sample_name_bowtie_pileup.chr10_t \
+     cnv_sample_name_bowtie_pileup.chr13_t \
+     cnv_sample_name_bowtie_pileup.chr15_t \
+     cnv_sample_name_bowtie_pileup.chr17_t 
 
 if [[ $? -ne 0 ]]; then
    echo "Run mysqlimport failed" >&2
@@ -761,18 +761,19 @@ else
     else
 	echo "get_ordered_genes.sql" >> $working_dir/completed.txt
 	sed -e s,NULL,,g < sample_name_cnv_calls_on_ordered_genes_$_now.txt > sample_name_cnv_calls_on_ordered_genes_$_now.txt.bak
-	mv sample_name_cnv_calls_on_ordered_genes_$_now.txt.bak sample_name_cnv_calls_on_ordered_genes_$_now.txt
-    fi
+	#mv sample_name_cnv_calls_on_ordered_genes_$_now.txt.bak sample_name_cnv_calls_on_ordered_genes_$_now.txt
+         mv sample_name_cnv_calls_on_ordered_genes_$_now.txt.bak sample_name_cnv_calls_on_ordered_genes.txt
+  fi
 fi
 echo -n "Finished get_ordered_genes.sql " >> $working_dir/time_check
 timecheck=`(date +"%Y-%m-%d [ %H:%M:%S ]")`;
 echo ${timecheck} >> $working_dir/time_check
 
-if [ -e sample_name_cnv_calls_on_ordered_genes_$_now.txt ]
+if [ -e sample_name_cnv_calls_on_ordered_genes.txt ]
 then
-    cp  sample_name_cnv_calls_on_ordered_genes_$_now.txt sample_result
+    cp  sample_name_cnv_calls_on_ordered_genes.txt sample_result
 else
-    echo "No cnv_calls file because sample_name_cnv_calls_on_ordered_genes_$_now.txt is empty."
+    echo "No cnv_calls file because sample_name_cnv_calls_on_ordered_genes.txt is empty."
 # do nothing as file is empty
 fi
 
@@ -820,7 +821,7 @@ if [ "$?" = "0" ]; then
     echo "cnv2vcf.py already run"
 else
     echo "cnv2vcf.py"
-    python $script_path/cnv2vcf.py sample_name_cnv_calls_on_ordered_genes_$_now.txt 4 17 16 seq_db > sample_name_cnv.vcf
+    python $script_path/cnv2vcf.py sample_name_cnv_calls_on_ordered_genes.txt 4 17 16 seq_db > sample_name_cnv.vcf
     if [[ $? -ne 0 ]] ; then
 	echo "Run cnv2vcf.py failed" >&2
 	exit 1
