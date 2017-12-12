@@ -761,6 +761,9 @@ echo ${timecheck} >> $working_dir/time_check
 if [ -e sample_name_cnv_calls_on_ordered_genes.txt ]
 then
     cp  sample_name_cnv_calls_on_ordered_genes.txt sample_result
+    callsize=`du -sh sample_name_cnv_calls_on_ordered_genes.txt | cut -f1`
+    echo -n "cnv call file size is: " 
+    echo $callsize
 else
     echo "No cnv call file and sample_name_cnv_calls_on_ordered_genes.txt is empty."
 # do nothing as file is empty
