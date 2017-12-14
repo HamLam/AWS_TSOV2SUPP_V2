@@ -771,7 +771,8 @@ if [ "$?" = "0" ]; then
 else
     echo "get_ordered_genes.sql"
     mysql --socket=$BASE/thesock -u root cnv2 < get_ordered_genes.sql  > sample_name_cnv_calls_on_ordered_genes_$_now.txt
-    if [[ $? -ne 0 ]] ; then
+    sync
+   if [[ $? -ne 0 ]] ; then
 	echo "Run get_ordered_genes.sql failed" >&2
 	## mysqladmin --socket=$BASE/thesock shutdown -u root
 	#exit 1
