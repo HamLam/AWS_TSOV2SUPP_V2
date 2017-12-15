@@ -763,23 +763,23 @@ else
     else
 	echo "get_ordered_genes.sql cnv3" >> $working_dir/completed.txt
 	sed -e s,NULL,,g < sample_name_cnv_calls_on_ordered_genes_$_now.txt > sample_name_cnv_calls_on_ordered_genes_$_now.txt.bak
-	#mv sample_name_cnv_calls_on_ordered_genes_$_now.txt.bak sample_name_cnv_calls_on_ordered_genes_$_now.txt
-	 mv sample_name_cnv_calls_on_ordered_genes_$_now.txt.bak sample_name_cnv_calls_on_ordered_genes.txt
+	mv sample_name_cnv_calls_on_ordered_genes_$_now.txt.bak sample_name_cnv_calls_on_ordered_genes_$_now.txt
+	# mv sample_name_cnv_calls_on_ordered_genes_$_now.txt.bak sample_name_cnv_calls_on_ordered_genes.txt
     fi
 fi
 echo -n "Finished get_ordered_genes.sql " >> $working_dir/time_check
 timecheck=`(date +"%Y-%m-%d [ %H:%M:%S ]")`;
 echo ${timecheck} >> $working_dir/time_check
 
-if [ -e sample_name_cnv_calls_on_ordered_genes.txt ]
+if [ -s sample_name_cnv_calls_on_ordered_genes_$_now.txt ]
 then
-    cp  sample_name_cnv_calls_on_ordered_genes.txt sample_result
-    callsize=`du -sh sample_name_cnv_calls_on_ordered_genes.txt | cut -f1`
-    echo -n "cnv call file size is: " 
-    echo $callsize
+    cp  sample_name_cnv_calls_on_ordered_genes_$_now.txt sample_result
+    #callsize=`du -sh sample_name_cnv_calls_on_ordered_genes.txt | cut -f1`
+    #echo -n "cnv call file size is: " 
+    #echo $callsize
 
 else
-    echo "No cnv call file and sample_name_cnv_calls_on_ordered_genes.txt is empty."
+    echo "No cnv call file and sample_name_cnv_calls_on_ordered_genes_$_now.txt is empty."
 # do nothing as file is empty
 fi
 
@@ -827,7 +827,7 @@ if [ "$?" = "0" ]; then
     echo "cnv2vcf.py already run"
 else
     echo "cnv2vcf.py"
-    python $script_path/cnv2vcf.py sample_name_cnv_calls_on_ordered_genes.txt 4 17 16 seq_db > sample_name_cnv.vcf
+    python $script_path/cnv2vcf.py sample_name_cnv_calls_on_ordered_genes_$_now.txt 4 17 16 seq_db > sample_name_cnv.vcf
     if [[ $? -ne 0 ]] ; then
 	echo "Run cnv2vcf.py failed" >&2
 	exit 1
