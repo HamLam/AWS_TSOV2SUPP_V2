@@ -121,8 +121,9 @@ echo "Assign subprocess(es) based on Submitted genes"
      echo "No gene for chr1-2 subprocess because chr1_2_genes_file.txt zero in size"
    fi
 
+
  echo "Running individual subprocesses via parallel"
- parallel -j +0 --joblog ${working_dir}/group_jobs_log < ${working_dir}/RunGroupCommands
+ parallel --jobs 8 --joblog ${working_dir}/group_jobs_log < ${working_dir}/RunGroupCommands
  
  # parallel -j +0 < ${working_dir}/RunGroupCommands
  # wait 
