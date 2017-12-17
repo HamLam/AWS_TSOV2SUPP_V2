@@ -742,7 +742,7 @@ then
 else
 	head -n4 $working_dir/completed.txt > $working_dir/new_completed.txt
 	mv $working_dir/new_completed.txt $working_dir/completed.txt
-        echo "No cnv_calls file..RESTARTING cnv1 run."
+        echo "Empty cnv_calls file..RESTARTING cnv1 run."
 	exit 1
 # do nothing as file is empty
 fi
