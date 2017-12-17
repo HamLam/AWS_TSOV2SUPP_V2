@@ -729,6 +729,10 @@ then
     cp  sample_name_cnv_calls_on_ordered_genes_$_now.txt sample_result
 else
     echo "No cnv call file and sample_name_cnv_calls_on_ordered_genes_$_now.txt is empty."
+    head -n4 $working_dir/completed.txt > $working_dir/new_completed.txt
+	mv $working_dir/new_completed.txt $working_dir/completed.txt
+echo "Empty cnv_calls file..RESTARTING cnv6 run."
+exit 1
 # do nothing as file is empty
 fi
 
