@@ -724,9 +724,7 @@ else
   if [[ $? -ne 0 ]] ; then
 	echo "Run get_ordered_genes.sql failed" >&2
 	## mysqladmin --socket=$BASE/thesock shutdown -u root
-	exit 1
-	head -n4 $working_dir/completed.txt > $working_dir/new_completed.txt
-	mv $working_dir/new_completed.txt $working_dir/completed.txt
+	#exit 1
     else
 	echo "get_ordered_genes.sql" >> $working_dir/completed.txt
 	sed -e s,NULL,,g < sample_name_cnv_calls_on_ordered_genes_$_now.txt > sample_name_cnv_calls_on_ordered_genes_$_now.txt.bak
@@ -742,7 +740,10 @@ if [ -s sample_name_cnv_calls_on_ordered_genes_$_now.txt ]
 then
     cp  sample_name_cnv_calls_on_ordered_genes_$_now.txt sample_result
 else
-    echo "No cnv_calls file because sample_name_cnv_calls_on_ordered_genes_$_now.txt is empty."
+	head -n4 $working_dir/completed.txt > $working_dir/new_completed.txt
+	mv $working_dir/new_completed.txt $working_dir/completed.txt
+        echo "No cnv_calls file..RESTARTING cnv1 run."
+	exit 1
 # do nothing as file is empty
 fi
 
