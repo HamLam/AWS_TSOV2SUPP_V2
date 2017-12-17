@@ -710,39 +710,6 @@ else
     echo "sample_name_predicted_amp_$_now.txt is empty"
 fi
 
-grep "get_ordered_genes.sql" $working_dir/completed.txt > /dev/null 2>&1
-if [ "$?" = "0" ]; then
-    echo "get_ordered_genes.sql already run"
-else
-    echo "get_ordered_genes.sql"
-    mysql --socket=$BASE/thesock -u root cnv7 < get_ordered_genes.sql  > sample_name_cnv_calls_on_ordered_genes_$_now.txt
-  sync
-if [[ $? -ne 0 ]] ; then
-	echo "Run get_ordered_genes.sql failed" >&2
-	## mysqladmin --socket=$BASE/thesock shutdown -u root
-	#exit 1
-    else
-	echo "get_ordered_genes.sql" >> $working_dir/completed.txt
-	sed -e s,NULL,,g < sample_name_cnv_calls_on_ordered_genes_$_now.txt > sample_name_cnv_calls_on_ordered_genes_$_now.txt.bak
-	mv sample_name_cnv_calls_on_ordered_genes_$_now.txt.bak sample_name_cnv_calls_on_ordered_genes_$_now.txt
-	#mv sample_name_cnv_calls_on_ordered_genes_$_now.txt.bak sample_name_cnv_calls_on_ordered_genes.txt
-    fi
-fi
-echo -n "Finished get_ordered_genes.sql " >> $working_dir/time_check
-timecheck=`(date +"%Y-%m-%d [ %H:%M:%S ]")`;
-echo ${timecheck} >> $working_dir/time_check
-
-if [ -s sample_name_cnv_calls_on_ordered_genes_$_now.txt ]
-then
-    cp  sample_name_cnv_calls_on_ordered_genes_$_now.txt sample_result
-else
-    echo "No cnv call file and sample_name_cnv_calls_on_ordered_genes_$_now.txt is empty."
-    head -n4 $working_dir/completed.txt > $working_dir/new_completed.txt
-	mv $working_dir/new_completed.txt $working_dir/completed.txt
-echo "Empty cnv_calls file..RESTARTING cnv7 run."
-exit 1
-# do nothing as file is empty
-fi
 
 grep "plot_script.pl" $working_dir/completed.txt > /dev/null 2>&1
 if [ "$?" = "0" ]; then
@@ -778,39 +745,39 @@ echo -n "Finished plot_genes_ordered_cnv7.py " >> $working_dir/time_check
 timecheck=`(date +"%Y-%m-%d [ %H:%M:%S ]")`;
 echo ${timecheck} >> $working_dir/time_check
 
-
-# grep "get_ordered_genes.sql" $working_dir/completed.txt > /dev/null 2>&1
-#if [ "$?" = "0" ]; then
-#    echo "get_ordered_genes.sql already run"
-#else
- #   echo "get_ordered_genes.sql"
- #   mysql --socket=$BASE/thesock -u root cnv7 < get_ordered_genes.sql  > sample_name_cnv_calls_on_ordered_genes_$_now.txt
- # sync
- # if [[ $? -ne 0 ]] ; then
- #	echo "Run get_ordered_genes.sql failed" >&2
+grep "get_ordered_genes.sql" $working_dir/completed.txt > /dev/null 2>&1
+if [ "$?" = "0" ]; then
+    echo "get_ordered_genes.sql already run"
+else
+    echo "get_ordered_genes.sql"
+    mysql --socket=$BASE/thesock -u root cnv7 < get_ordered_genes.sql  > sample_name_cnv_calls_on_ordered_genes_$_now.txt
+  sync
+if [[ $? -ne 0 ]] ; then
+	echo "Run get_ordered_genes.sql failed" >&2
 	## mysqladmin --socket=$BASE/thesock shutdown -u root
 	#exit 1
-  #  else
-#	echo "get_ordered_genes.sql" >> $working_dir/completed.txt
-#	sed -e s,NULL,,g < sample_name_cnv_calls_on_ordered_genes_$_now.txt > sample_name_cnv_calls_on_ordered_genes_$_now.txt.bak
-#	mv sample_name_cnv_calls_on_ordered_genes_$_now.txt.bak sample_name_cnv_calls_on_ordered_genes_$_now.txt
+    else
+	echo "get_ordered_genes.sql" >> $working_dir/completed.txt
+	sed -e s,NULL,,g < sample_name_cnv_calls_on_ordered_genes_$_now.txt > sample_name_cnv_calls_on_ordered_genes_$_now.txt.bak
+	mv sample_name_cnv_calls_on_ordered_genes_$_now.txt.bak sample_name_cnv_calls_on_ordered_genes_$_now.txt
 	#mv sample_name_cnv_calls_on_ordered_genes_$_now.txt.bak sample_name_cnv_calls_on_ordered_genes.txt
- #   fi
-# fi
-# echo -n "Finished get_ordered_genes.sql " >> $working_dir/time_check
-# timecheck=`(date +"%Y-%m-%d [ %H:%M:%S ]")`;
-# echo ${timecheck} >> $working_dir/time_check
+    fi
+fi
+echo -n "Finished get_ordered_genes.sql " >> $working_dir/time_check
+timecheck=`(date +"%Y-%m-%d [ %H:%M:%S ]")`;
+echo ${timecheck} >> $working_dir/time_check
 
-# if [ -s sample_name_cnv_calls_on_ordered_genes_$_now.txt ]
-# then
- #   cp  sample_name_cnv_calls_on_ordered_genes_$_now.txt sample_result
-    #callsize=`du -sh sample_name_cnv_calls_on_ordered_genes.txt | cut -f1`
-    #echo -n "cnv call file size is: " 
-    #echo $callsize
-# else
+if [ -s sample_name_cnv_calls_on_ordered_genes_$_now.txt ]
+then
+    cp  sample_name_cnv_calls_on_ordered_genes_$_now.txt sample_result
+else
     echo "No cnv call file and sample_name_cnv_calls_on_ordered_genes_$_now.txt is empty."
+	rm $working_dir/*_t
+	mv $working_dir/completed.txt $working_dir/completed.old.txt
+        echo "Empty cnv_calls file..RESTARTING cnv7 run."
+exit 1
 # do nothing as file is empty
-# fi
+fi
 
 grep "move_script.pl" $working_dir/completed.txt > /dev/null 2>&1
 if [ "$?" = "0" ]; then
