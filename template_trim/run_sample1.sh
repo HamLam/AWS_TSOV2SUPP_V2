@@ -724,7 +724,9 @@ else
   if [[ $? -ne 0 ]] ; then
 	echo "Run get_ordered_genes.sql failed" >&2
 	## mysqladmin --socket=$BASE/thesock shutdown -u root
-	#exit 1
+	exit 1
+	head -n4 $working_dir/completed.txt > $working_dir/new_completed.txt
+	mv $working_dir/new_completed.txt $working_dir/completed.txt
     else
 	echo "get_ordered_genes.sql" >> $working_dir/completed.txt
 	sed -e s,NULL,,g < sample_name_cnv_calls_on_ordered_genes_$_now.txt > sample_name_cnv_calls_on_ordered_genes_$_now.txt.bak
