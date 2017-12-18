@@ -778,7 +778,7 @@ echo ${timecheck} >> $working_dir/time_check
     #echo -n "cnv call file size is: " 
     #echo $callsize
 #else
-    echo "No cnv call file and sample_name_cnv_calls_on_ordered_genes_$_now.txt is empty."
+    #echo "No cnv call file and sample_name_cnv_calls_on_ordered_genes_$_now.txt is empty."
 # do nothing as file is empty
 #fi
 grep "get_ordered_genes.sql" $working_dir/completed.txt > /dev/null 2>&1
