@@ -807,10 +807,11 @@ if [ -s sample_name_cnv_calls_on_ordered_genes_$_now.txt ]
 then
     cp  sample_name_cnv_calls_on_ordered_genes_$_now.txt sample_result
 else
-echo "No cnv call file and sample_name_cnv_calls_on_ordered_genes_$_now.txt is empty."
-	rm $working_dir/*_t
-	mv $working_dir/completed.txt $working_dir/completed.old.txt
-echo "Empty cnv_calls file..RESTARTING cnv3 run."
+   echo "sample_name_cnv_calls_on_ordered_genes_$_now.txt is empty"
+   cp $working_dir/completed.txt $working_dir/completed.old.txt
+	head -n9 $working_dir/completed.txt > $working_dir/completed.txt.tmp
+	mv $working_dir/completed.txt.tmp $working_dir/completed.txt
+        echo "Empty cnv_calls file..RESTARTING cnv3 from find_median.R."
 exit 1
 # do nothing as file is empty
 fi
