@@ -802,9 +802,10 @@ then
 else
 	echo "sample_name_cnv_calls_on_ordered_genes_$_now.txt is empty"
 	cp $working_dir/completed.txt $working_dir/completed.old.txt
-	head -n9 $working_dir/completed.txt > $working_dir/completed.txt.tmp
+	head -n1 $working_dir/completed.txt > $working_dir/completed.txt.tmp
 	mv $working_dir/completed.txt.tmp $working_dir/completed.txt
-        echo "Empty cnv_calls file..RESTARTING cnv4 from find_median.R."	
+        echo "Empty cnv_calls file..RESTARTING cnv4"
+	rm $working_dir/*_t
 exit 1
 # do nothing as file is empty
 fi
