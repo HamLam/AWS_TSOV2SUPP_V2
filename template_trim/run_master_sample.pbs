@@ -123,7 +123,7 @@ echo "Assign subprocess(es) based on Submitted genes"
 
 
  echo "Running individual subprocesses via parallel"
- parallel --jobs 1 --joblog ${working_dir}/group_jobs_log < ${working_dir}/RunGroupCommands
+ parallel -j +0 --joblog ${working_dir}/group_jobs_log < ${working_dir}/RunGroupCommands
  
  # parallel -j +0 < ${working_dir}/RunGroupCommands
  # wait 
