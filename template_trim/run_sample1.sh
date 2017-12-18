@@ -808,6 +808,7 @@ else
 	head -n1 $working_dir/completed.txt > $working_dir/completed.txt.tmp
 	mv $working_dir/completed.txt.tmp $working_dir/completed.txt
         echo "Empty cnv_calls file..RESTARTING cnv1"
+	rm $working_dir/*_t
 	exit 1
 # do nothing as file is empty
 fi
