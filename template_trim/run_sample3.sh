@@ -391,8 +391,12 @@ else
     echo "Run  get_three_ref.R"
     R CMD BATCH get_three_ref.R
     if [[ $? -ne 0 ]] ; then
-	echo "Run get_three_ref.R failed" >&2
+	echo "Run get_three_ref.R failed cnv3" >&2
 	## mysqladmin --socket=$BASE/thesock shutdown -u root
+	cp $working_dir/completed.txt $working_dir/completed.old.txt
+	head -n1 $working_dir/completed.txt > $working_dir/completed.txt.tmp
+	mv $working_dir/completed.txt.tmp $working_dir/completed.txt
+	rm $working_dir/*_t
 	exit 1
     else
         echo "g3 get_three_ref.R done"
