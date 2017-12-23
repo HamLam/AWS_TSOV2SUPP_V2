@@ -356,8 +356,12 @@ else
     echo "Run  smooth_coverage.R"
     R CMD BATCH smooth_coverage.R
     if [[ $? -ne 0 ]] ; then
-	echo "Run smooth_coverage.R failed" >&2
+	echo "Run smooth_coverage.R failed cnv1 " >&2
 	## mysqladmin --socket=$BASE/thesock shutdown -u root
+	cp $working_dir/completed.txt $working_dir/completed.old.txt
+	head -n1 $working_dir/completed.txt > $working_dir/completed.txt.tmp
+	mv $working_dir/completed.txt.tmp $working_dir/completed.txt
+	rm $working_dir/*_t
 	exit 1
     else
         echo "g1 smooth_coverage.R done"
