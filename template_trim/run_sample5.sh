@@ -493,6 +493,8 @@ echo -n "Finished create_sample_coverage.sql " >> $working_dir/time_check
 timecheck=`(date +"%Y-%m-%d [ %H:%M:%S ]")`;
 echo ${timecheck} >> $working_dir/time_check
 
+
+chmod o+w $working_dir
 grep "Get_3_random_ref_genes" $working_dir/completed.txt > /dev/null 2>&1
 if [ "$?" = "0" ]; then
     echo "Get_3_random_ref_genes already run"
@@ -534,6 +536,8 @@ else
  echo "Get_3_random_ref_genes" >> $working_dir/completed.txt
 
 fi
+chmod o+w $working_dir
+
 
 grep "create_control_coverage.sql" $working_dir/completed.txt > /dev/null 2>&1
 if [ "$?" = "0" ]; then
