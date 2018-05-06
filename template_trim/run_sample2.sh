@@ -869,6 +869,7 @@ else
         mv sample_name_cnv_calls_on_ordered_genes_$_now.txt sample_name_cnv_calls_on_ordered_genes_$_now.txt.tmp
         cat sample_name_cnv_calls_on_ordered_genes_$_now.txt.tmp >> ${working_dir}/Three_Ref_Genes
         mv ${working_dir}/Three_Ref_Genes sample_name_cnv_calls_on_ordered_genes_$_now.txt
+	sed 's/^.*.txt://g' sample_name_cnv_calls_on_ordered_genes_$_now.txt
    fi
 fi
 echo -n "Finished get_ordered_genes.sql " >> $working_dir/time_check
